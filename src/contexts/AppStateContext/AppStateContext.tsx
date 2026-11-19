@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 import { getShowRightAnswersLocalStorageFlag, setShowRightAnswersLocalStorageFlag } from './utils'
 import { BaseData } from '../../types'
 import { getEmptyBaseData } from '../../helpers'
+import { cleanupRemovedQuestions } from '../../helpers/cleanupOldStorage'
 import groupsJson from '../../data/groups.json'
 
 type Content = {
@@ -46,10 +47,13 @@ const AppStateProvider = ({ children }: ProviderProps) => {
   useEffect(() => {
     setTimeout(() => {
       import('././../../data/ru_2026.json').then((data) => {
+        const questions = data.default as BaseData['questions']
+
+        cleanupRemovedQuestions(questions)
         setContent({
           loading: false,
           groups: groupsJson.groups as BaseData['groups'],
-          questions: data.default as BaseData['questions'],
+          questions,
         })
       })
     }, 700)

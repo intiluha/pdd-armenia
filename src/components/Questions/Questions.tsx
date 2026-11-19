@@ -15,7 +15,6 @@ import ShowRightAnswerBtn from './components/ShowRightAnswerBtn'
 import s from './Questions.module.scss'
 import QuestionStatisticProgress from './components/QuestionStatisticProgress'
 import FontSizeControl from '../FontSizeControl/FontSizeControl'
-import DatabaseOutdatedBlock from '../DatabaseOutdatedBlock/DatabaseOutdatedBlock'
 import { useFontSize } from '../../hooks/useFontSize'
 
 interface Props {
@@ -187,10 +186,6 @@ const Questions: React.FC<Props> = ({
                   )}
                 </div>
               </div>
-            </div>
-
-            <div style={{ marginTop: '32px' }}>
-              <DatabaseOutdatedBlock />
             </div>
       </div>
     </>

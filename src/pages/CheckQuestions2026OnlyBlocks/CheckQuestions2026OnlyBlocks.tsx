@@ -60,10 +60,11 @@ const QuestionBlock = ({ q }: { q: Question }) => (
 
 const CheckQuestions2026OnlyBlocks = () => {
   const withGap: (Question | null)[] = []
-  for (const q of questions) {
+  questions.forEach((q, i) => {
+    // каждая группа начинается с левой колонки
+    if (i > 0 && q.gid !== questions[i - 1].gid && withGap.length % 2 === 1) withGap.push(null)
     withGap.push(q)
-    if (q.id === 131 || q.id === 644 || q.id === 857) withGap.push(null)
-  }
+  })
 
   const pairs: [Question | null, Question | null][] = []
   for (let i = 0; i < withGap.length; i += 2) {

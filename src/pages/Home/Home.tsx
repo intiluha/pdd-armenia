@@ -17,7 +17,6 @@ import HomePlaceholder from '../../placeholders/HomePlaceholder'
 import { getQuestionsHasErrors } from '../Errors/helpers'
 import QuestionVerifiedBlock from '../../components/QuestionVerifiedBlock/QuestionVerifiedBlock'
 import TelegramButton from '../../components/TelegramButton/TelegramButton'
-import DatabaseOutdatedBlock from '../../components/DatabaseOutdatedBlock/DatabaseOutdatedBlock'
 
 const Home: React.FC = () => {
   const { content } = useAppState()
@@ -32,7 +31,6 @@ const Home: React.FC = () => {
     <>
       <Grid container>
         <div className='home-page-container'>
-          <DatabaseOutdatedBlock />
           <Paper
             onClick={() => navigate(routes.topics.path, { replace: true })}
             sx={{
